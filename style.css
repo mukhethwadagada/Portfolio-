@@ -1,0 +1,682 @@
+/* General Styling & Fonts */
+body {
+    font-family: 'Open Sans', sans-serif; /* A clear, readable font */
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-color: #E0F2F7; /* Light Blue Background */
+    color: #333; /* Dark Grey for general text */
+    line-height: 1.7; /* Increased line height for readability */
+}
+
+h1, h2, h3 {
+    font-family: 'Montserrat', sans-serif; /* A more impactful heading font */
+    color: #2C3E50; /* Darker Grey for headings */
+}
+
+/* Header & Navigation */
+header {
+    background-color: #34495E; /* Deep Blue-Grey */
+    color: #fff;
+    padding: 1rem 0;
+    text-align: center;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+}
+
+nav ul li {
+    margin: 0 20px;
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.1em;
+    transition: color 0.3s ease, transform 0.2s ease;
+    padding: 5px 0;
+    position: relative; /* For underline effect */
+}
+
+nav ul li a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 3px;
+    background: #4DB6AC; /* Vibrant Aqua */
+    left: 0;
+    bottom: -5px;
+    transition: width 0.3s ease-in-out;
+}
+
+nav ul li a:hover::after {
+    width: 100%;
+}
+
+nav ul li a:hover {
+    color: #4DB6AC; /* Vibrant Aqua */
+    transform: translateY(-2px);
+}
+
+/* Main Content Sections */
+main {
+    max-width: 1100px; /* Slightly wider main content */
+    margin: 2rem auto;
+    padding: 0 25px;
+}
+
+section {
+    background-color: #fff;
+    padding: 40px; /* Increased padding */
+    margin-bottom: 2.5rem; /* More space between sections */
+    border-radius: 10px; /* More rounded corners */
+    box-shadow: 0 8px 15px rgba(0,0,0,0.1); /* Softer, deeper shadow */
+    opacity: 0;
+    transform: translateY(30px); /* Slightly more pronounced slide up */
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out; /* Longer transition */
+}
+
+section.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+section h1 {
+    text-align: center;
+    color: #2C3E50; /* Darker Grey */
+    margin-bottom: 2rem;
+    font-size: 2.8em; /* Larger headings */
+    position: relative;
+    padding-bottom: 15px;
+}
+
+section h1::after {
+    content: '';
+    position: absolute;
+    width: 80px;
+    height: 4px;
+    background: #4DB6AC; /* Vibrant Aqua */
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 0;
+    border-radius: 2px;
+}
+
+
+/* Hero Section */
+.hero-section {
+    background: linear-gradient(to right, #34495E, #4A6572); /* Grey-Blue Gradient */
+    color: #ECF0F1; /* Light Grey Text */
+    text-align: center;
+    padding: 80px 20px; /* More padding */
+    margin-top: 0; /* No top margin */
+    border-radius: 0; /* Full width, no rounded corners */
+    box-shadow: none; /* No shadow */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 70vh; /* Takes up more vertical space */
+    position: relative;
+    overflow: hidden; /* For potential background patterns */
+}
+
+/* Optional: Subtle background pattern for hero */
+.hero-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('data:image/svg+xml,%3Csvg width="6" height="6" viewBox="0 0 6 6" xmlns="http://www.w3.org/2000/svg"%3E%3Cg fill="%23ECF0F1" fill-opacity="0.1" fill-rule="evenodd"%3E%3Cpath d="M5 0h1L0 6V5zm1 6v-1L1 0h1L6 4V6z"/%3E%3C/g%3E%3C/svg%3E');
+    opacity: 0.2;
+    z-index: 1;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2; /* Ensure content is above pattern */
+}
+
+.hero-profile-pic {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 6px solid #4DB6AC; /* Vibrant Aqua Border */
+    box-shadow: 0 0 25px rgba(0,0,0,0.4);
+    margin-bottom: 30px;
+    animation: fadeInScale 1.5s ease-out forwards;
+}
+
+.hero-title {
+    font-size: 4em; /* Very large title */
+    color: #fff;
+    margin-bottom: 10px;
+    line-height: 1.1;
+    opacity: 1; /* Keep visible for typing */
+    min-height: 1.1em; /* Ensure height even when empty for typing effect */
+}
+
+/* Typing Effect Cursor */
+#typed-text {
+    position: relative; /* To position the cursor */
+}
+
+#typed-text::after {
+    content: '|'; /* The cursor */
+    display: inline-block;
+    animation: blink-caret 0.75s step-end infinite;
+    color: #4DB6AC; /* Vibrant Aqua cursor */
+    font-weight: normal; /* Make cursor normal weight if font is bold */
+}
+
+@keyframes blink-caret {
+    from, to { border-color: transparent }
+    50% { border-color: #4DB6AC; } /* Vibrant Aqua color for blinking */
+}
+
+.hero-subtitle {
+    font-size: 1.8em;
+    color: #A3D9D1; /* Lighter Aqua for subtitle */
+    margin-bottom: 20px;
+    animation: fadeIn 1s ease-out forwards 1s; /* Still animates in after typing starts */
+    opacity: 0;
+}
+
+.hero-description {
+    font-size: 1.2em;
+    color: #D3E0EA; /* Even lighter blue-grey */
+    max-width: 700px;
+    margin: 0 auto 40px auto;
+    animation: fadeIn 1s ease-out forwards 1.2s;
+    opacity: 0;
+}
+
+.hero-buttons .button {
+    margin: 0 15px;
+    padding: 15px 35px;
+    font-size: 1.1em;
+    border-radius: 50px; /* Pill-shaped buttons */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    animation: fadeIn 1s ease-out forwards 1.5s;
+    opacity: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hero-buttons .button:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+}
+
+.primary-button {
+    background-color: #4DB6AC; /* Vibrant Aqua */
+    color: #34495E; /* Dark Blue-Grey Text on Aqua */
+}
+
+.primary-button:hover {
+    background-color: #38A096; /* Slightly darker Aqua */
+}
+
+.secondary-button {
+    background-color: transparent;
+    border: 2px solid #4DB6AC; /* Vibrant Aqua Border */
+    color: #4DB6AC; /* Vibrant Aqua Text */
+}
+
+.secondary-button:hover {
+    background-color: #4DB6AC; /* Fill with Aqua on hover */
+    color: #34495E; /* Dark Blue-Grey Text on Aqua */
+}
+
+
+/* About Section */
+.about-content {
+    display: block;
+    text-align: left;
+}
+
+.about-content p {
+    max-width: 800px; /* Keep text width readable */
+    margin: 0 auto 1.5em auto; /* Center paragraphs and add vertical spacing */
+    font-size: 1.05em;
+    color: #555; /* Medium Grey */
+}
+
+
+/* Skills Section */
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); /* Auto-fit columns */
+    gap: 25px;
+    justify-content: center;
+    text-align: center;
+    max-width: 900px; /* Constrain width */
+    margin: 0 auto;
+}
+
+.skill-item {
+    background-color: #EFF8F7; /* Very Light Aqua/Grey */
+    padding: 20px 10px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 120px; /* Ensure consistent height */
+}
+
+.skill-item:hover {
+    transform: translateY(-8px) scale(1.03); /* Lift and slightly enlarge */
+    box-shadow: 0 8px 18px rgba(0,0,0,0.15);
+}
+
+.skill-icon {
+    font-size: 3.5em; /* Large icons */
+    color: #00897B; /* Stronger Aqua */
+    margin-bottom: 10px;
+    transition: color 0.3s ease;
+}
+
+.skill-item:hover .skill-icon {
+    color: #00695C; /* Darker Aqua on hover */
+}
+
+.skill-item p {
+    margin: 0;
+    font-weight: 600;
+    color: #555;
+    font-size: 1.05em;
+}
+
+
+/* Projects Section */
+.project-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); /* Slightly wider project cards */
+    gap: 30px;
+}
+
+.project-card {
+    background-color: #f9f9f9;
+    border: 1px solid #e0e0e0; /* Lighter border */
+    border-radius: 10px;
+    padding: 25px;
+    text-align: center;
+    box-shadow: 0 6px 12px rgba(0,0,0,0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.project-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+}
+
+.project-card img {
+    max-width: 100%;
+    height: 220px; /* Increased height */
+    object-fit: cover;
+    border-radius: 6px;
+    margin-bottom: 20px;
+    border: 1px solid #f0f0f0;
+}
+
+.project-card h3 {
+    color: #333;
+    margin-top: 0;
+    margin-bottom: 12px;
+    font-size: 1.4em;
+}
+
+.project-card p {
+    font-size: 1em;
+    color: #666;
+    margin-bottom: 20px;
+}
+
+.project-card a.button { /* Use .button class for project links too */
+    background-color: #00897B; /* Stronger Aqua */
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    margin: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.project-card a.button:hover {
+    background-color: #00695C; /* Darker Aqua */
+}
+
+
+/* View More Work buttons */
+.view-more-work {
+    text-align: center;
+    margin-top: 40px;
+}
+
+.view-more-work .button {
+    background-color: #00897B; /* Stronger Aqua for consistency */
+    color: #fff;
+    padding: 12px 28px;
+    border-radius: 50px;
+    font-weight: bold;
+    display: inline-block;
+    margin: 0 10px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.view-more-work .button:hover {
+    background-color: #00695C; /* Darker Aqua on hover */
+    transform: translateY(-3px);
+}
+
+
+/* Certifications Section */
+.certification-list {
+    display: grid; /* Use grid for certifications */
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 25px;
+}
+
+.certification-item {
+    background-color: #f9f9f9;
+    border: 1px solid #e0e0e0;
+    border-radius: 10px;
+    padding: 25px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.certification-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 12px rgba(0,0,0,0.1);
+}
+
+.certification-item h3 {
+    color: #333;
+    margin-top: 0;
+    margin-bottom: 8px;
+    font-size: 1.3em;
+}
+
+.certification-item p {
+    margin: 5px 0;
+    color: #666;
+    font-size: 0.95em;
+}
+
+.certification-item a {
+    color: #00897B; /* Stronger Aqua */
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease;
+    display: inline-block;
+    margin-top: 10px;
+}
+
+.certification-item a:hover {
+    color: #00695C; /* Darker Aqua */
+}
+
+/* Contact Section */
+.contact-content {
+    text-align: center;
+}
+
+.contact-content p {
+    font-size: 1.1em;
+    margin-bottom: 30px;
+    color: #555;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.contact-options {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px; /* Increased gap */
+    justify-content: center;
+}
+
+.contact-option {
+    background-color: #f9f9f9;
+    border: 1px solid #e0e0e0;
+    border-radius: 10px;
+    padding: 30px; /* More padding */
+    box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Push button to bottom */
+}
+
+.contact-option:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 8px 18px rgba(0,0,0,0.15);
+}
+
+.contact-option h3 {
+    color: #333;
+    margin-top: 0;
+    margin-bottom: 12px;
+    font-size: 1.4em;
+}
+
+.contact-option p {
+    font-size: 1em;
+    color: #666;
+    margin-bottom: 25px; /* More space before button */
+    flex-grow: 1; /* Allows paragraph to take up available space */
+}
+
+/* General Button Style */
+.button {
+    background-color: #00897B; /* Stronger Aqua as default button */
+    color: #fff;
+    padding: 12px 25px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    display: inline-block;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.button:hover {
+    background-color: #00695C; /* Darker Aqua on hover */
+    transform: translateY(-2px);
+}
+
+/* Specific button colors for contact options - Keeping common brand colors where appropriate */
+.contact-option .button:nth-of-type(1) { /* LinkedIn button */
+    background-color: #0A66C2; /* LinkedIn's official blue */
+}
+.contact-option .button:nth-of-type(1):hover {
+    background-color: #074780;
+}
+
+.contact-option .button:nth-of-type(2) { /* Email button (a subtle red for action) */
+    background-color: #E67E22; /* A warm orange, still stands out but less aggressive */
+}
+.contact-option .button:nth-of-type(2):hover {
+    background-color: #D35400;
+}
+
+.contact-option .button:nth-of-type(3) { /* CV Download button (a practical grey) */
+    background-color: #7F8C8D; /* Medium Grey */
+}
+.contact-option .button:nth-of-type(3):hover {
+    background-color: #5B6F73;
+}
+
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 2rem;
+    background-color: #34495E; /* Deep Blue-Grey */
+    color: #ECF0F1; /* Light Grey for footer text */
+    margin-top: 3rem;
+    font-size: 0.95em;
+    box-shadow: 0 -4px 8px rgba(0,0,0,0.1);
+}
+
+/* Horizontal Rule - More subtle */
+hr {
+    border: none;
+    border-top: 1px dashed #A3D9D1; /* Lighter aqua dashed line */
+    margin: 50px 0; /* More spacing */
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* --- Animations --- */
+/* Keyframe for initial fade-in and scale for profile picture */
+@keyframes fadeInScale {
+    from {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Keyframe for general fade-in (used for text in hero) */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* Keyframe for sliding up (used for hero title) */
+@keyframes slideInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Class applied by JavaScript for items within sections to animate them */
+.animated-item {
+    opacity: 0; /* Hidden by default */
+    transform: translateY(20px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out; /* Smooth transition */
+}
+
+.animated-item.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+    /* Transition delay set by JavaScript for staggered effect */
+}
+
+
+/* Responsive Design */
+@media (max-width: 900px) {
+    .hero-title {
+        font-size: 3em;
+    }
+    .hero-subtitle {
+        font-size: 1.5em;
+    }
+    .hero-description {
+        font-size: 1.1em;
+    }
+}
+
+@media (max-width: 768px) {
+    header {
+        padding: 0.8rem 0;
+    }
+    nav ul {
+        flex-direction: column;
+    }
+    nav ul li {
+        margin: 8px 0;
+    }
+
+    .hero-section {
+        padding: 60px 15px;
+        min-height: 60vh;
+    }
+    .hero-profile-pic {
+        width: 160px;
+        height: 160px;
+    }
+    .hero-title {
+        font-size: 2.5em;
+    }
+    .hero-subtitle {
+        font-size: 1.3em;
+    }
+    .hero-description {
+        font-size: 1em;
+    }
+    .hero-buttons .button {
+        padding: 12px 25px;
+        font-size: 1em;
+        margin: 8px;
+    }
+
+    section {
+        padding: 30px 20px;
+    }
+    section h1 {
+        font-size: 2.2em;
+    }
+
+    .project-grid, .contact-options, .skills-grid {
+        grid-template-columns: 1fr; /* Stack elements on small screens */
+    }
+
+    .about-content {
+        flex-direction: column; /* Ensure proper stacking on small screens if it had display:flex previously */
+    }
+}
+
+@media (max-width: 480px) {
+    main {
+        padding: 0 15px;
+    }
+    .hero-profile-pic {
+        width: 120px;
+        height: 120px;
+    }
+    .hero-title {
+        font-size: 2em;
+    }
+    .hero-subtitle {
+        font-size: 1.1em;
+    }
+    section h1 {
+        font-size: 1.8em;
+    }
+    .skill-icon {
+        font-size: 3em;
+    }
+}
