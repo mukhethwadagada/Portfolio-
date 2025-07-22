@@ -680,3 +680,22 @@ hr {
         font-size: 3em;
     }
 }
+ .contact-social-icons {
+        text-align: center; /* Adjust as needed, if you want them centered */
+        margin-top: 1em;
+    }
+
+    .contact-social-icons a {
+        margin: 0 10px; /* Space between icons */
+        color: #333; /* Default icon color */
+        transition: color 0.3s ease; /* Smooth hover effect */
+    }
+
+    .contact-social-icons a:hover {
+        color: #0077b5; /* LinkedIn blue on hover */
+        text-decoration: none; /* Remove underline on hover */
+    }
+
+    .contact-social-icons a:hover .fa-github {
+        color: #6e5494; /* GitHub purple on hover, or a darker grey */
+    }
